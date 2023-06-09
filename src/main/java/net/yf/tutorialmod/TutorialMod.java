@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.yf.tutorialmod.item.ModCreativeModeTabs;
+import net.yf.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -24,6 +26,8 @@ public class TutorialMod
     public TutorialMod()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModItems.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -39,7 +43,15 @@ public class TutorialMod
 
     private void addCreative(CreativeModeTabEvent.BuildContents event)
     {
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.BLACK_OPAL);
+            event.accept(ModItems.RAW_BLACK_OPAL);
+        }
 
+        if(event.getTab() == ModCreativeModeTabs.TUTORIAL_TAB) {
+            event.accept(ModItems.BLACK_OPAL);
+            event.accept(ModItems.RAW_BLACK_OPAL);
+        }
     }
 
 
