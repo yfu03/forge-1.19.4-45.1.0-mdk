@@ -1,6 +1,7 @@
 package net.yf.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,6 +13,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.yf.tutorialmod.block.ModBlocks;
+import net.yf.tutorialmod.entity.ModEntities;
+import net.yf.tutorialmod.entity.client.TigerRenderer;
 import net.yf.tutorialmod.item.ModCreativeModeTabs;
 import net.yf.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
@@ -30,6 +33,8 @@ public class TutorialMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -52,6 +57,10 @@ public class TutorialMod
 
         if(event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModBlocks.BLACK_OPAL_BLOCK);
+        }
+
+        if(event.getTab() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(ModItems.TIGER_SPAWN_EGG);
         }
 
         if(event.getTab() == CreativeModeTabs.NATURAL_BLOCKS){
@@ -84,6 +93,7 @@ public class TutorialMod
             event.accept(ModBlocks.STRIPPED_EBONY_LOG);
             event.accept(ModBlocks.STRIPPED_EBONY_WOOD);
             event.accept(ModBlocks.EBONY_SAPLING);
+            event.accept(ModItems.TIGER_SPAWN_EGG);
         }
     }
 
@@ -95,7 +105,7 @@ public class TutorialMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.TIGER.get(), TigerRenderer::new);
         }
     }
 }
