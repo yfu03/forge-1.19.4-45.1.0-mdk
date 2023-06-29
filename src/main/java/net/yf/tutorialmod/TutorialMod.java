@@ -94,6 +94,7 @@ public class TutorialMod
             event.accept(ModBlocks.STRIPPED_EBONY_WOOD);
             event.accept(ModBlocks.EBONY_SAPLING);
             event.accept(ModItems.TIGER_SPAWN_EGG);
+            event.accept(ModItems.ANIMATED_ITEM);
         }
     }
 

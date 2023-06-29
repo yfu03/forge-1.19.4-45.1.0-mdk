@@ -8,6 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.yf.tutorialmod.TutorialMod;
 import net.yf.tutorialmod.entity.ModEntities;
+import net.yf.tutorialmod.item.custom.AnimatedItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -21,6 +22,9 @@ public class ModItems {
     public static final RegistryObject<Item> TIGER_SPAWN_EGG = ITEMS.register("tiger_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.TIGER, 0xD57E36, 0x1D0D00,
                     new Item.Properties()));
+
+    public static final RegistryObject<Item> ANIMATED_ITEM = ITEMS.register("animated_item",
+            () -> new AnimatedItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
