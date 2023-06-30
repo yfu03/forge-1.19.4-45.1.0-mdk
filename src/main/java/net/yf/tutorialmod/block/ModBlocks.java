@@ -15,6 +15,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.yf.tutorialmod.TutorialMod;
+import net.yf.tutorialmod.block.custom.AnimatedBlock;
 import net.yf.tutorialmod.block.custom.ModFlammableRotatedPillarBlock;
 import net.yf.tutorialmod.item.ModItems;
 import net.yf.tutorialmod.worldgen.tree.EbonyTreeGrower;
@@ -97,6 +98,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> EBONY_SAPLING = registerBlock("ebony_sapling",
             () -> new SaplingBlock(new EbonyTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+
+    public static final RegistryObject<Block> ANIMATED_BLOCK = BLOCKS.register("animated_block",
+            () -> new AnimatedBlock(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
        RegistryObject<T> toReturn = BLOCKS.register(name, block);

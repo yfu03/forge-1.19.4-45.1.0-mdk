@@ -1,6 +1,7 @@
 package net.yf.tutorialmod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,11 +14,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.yf.tutorialmod.block.ModBlocks;
+import net.yf.tutorialmod.block.entity.ModBlockEntities;
+import net.yf.tutorialmod.block.entity.client.AnimatedBlockRenderer;
 import net.yf.tutorialmod.entity.ModEntities;
 import net.yf.tutorialmod.entity.client.TigerRenderer;
 import net.yf.tutorialmod.item.ModCreativeModeTabs;
 import net.yf.tutorialmod.item.ModItems;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TutorialMod.MOD_ID)
@@ -35,6 +39,9 @@ public class TutorialMod
         ModBlocks.register(modEventBus);
 
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+
+        GeckoLib.initialize();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -95,6 +102,7 @@ public class TutorialMod
             event.accept(ModBlocks.EBONY_SAPLING);
             event.accept(ModItems.TIGER_SPAWN_EGG);
             event.accept(ModItems.ANIMATED_ITEM);
+            event.accept(ModBlocks.ANIMATED_BLOCK);
         }
     }
 
@@ -107,6 +115,7 @@ public class TutorialMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             EntityRenderers.register(ModEntities.TIGER.get(), TigerRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
         }
     }
 }

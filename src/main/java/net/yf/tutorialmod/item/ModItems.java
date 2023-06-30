@@ -7,7 +7,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.yf.tutorialmod.TutorialMod;
+import net.yf.tutorialmod.block.ModBlocks;
 import net.yf.tutorialmod.entity.ModEntities;
+import net.yf.tutorialmod.item.custom.AnimatedBlockItem;
 import net.yf.tutorialmod.item.custom.AnimatedItem;
 
 public class ModItems {
@@ -25,6 +27,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> ANIMATED_ITEM = ITEMS.register("animated_item",
             () -> new AnimatedItem(new Item.Properties()));
+    public static final RegistryObject<Item> ANIMATED_BLOCK_ITEM = ITEMS.register("animated_block",
+            () -> new AnimatedBlockItem(ModBlocks.ANIMATED_BLOCK.get(), new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
