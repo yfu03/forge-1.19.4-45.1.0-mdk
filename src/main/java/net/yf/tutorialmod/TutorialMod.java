@@ -103,6 +103,10 @@ public class TutorialMod
             event.accept(ModItems.TIGER_SPAWN_EGG);
             event.accept(ModItems.ANIMATED_ITEM);
             event.accept(ModBlocks.ANIMATED_BLOCK);
+            event.accept(ModItems.AMETHYST_HELMET);
+            event.accept(ModItems.AMETHYST_CHESTPLATE);
+            event.accept(ModItems.AMETHYST_LEGGINGS);
+            event.accept(ModItems.AMETHYST_BOOTS);
         }
     }
 
