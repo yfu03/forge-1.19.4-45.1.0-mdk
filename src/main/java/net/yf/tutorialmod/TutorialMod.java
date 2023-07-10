@@ -20,6 +20,7 @@ import net.yf.tutorialmod.entity.ModEntities;
 import net.yf.tutorialmod.entity.client.TigerRenderer;
 import net.yf.tutorialmod.item.ModCreativeModeTabs;
 import net.yf.tutorialmod.item.ModItems;
+import net.yf.tutorialmod.sound.ModSounds;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -40,6 +41,8 @@ public class TutorialMod
 
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+
+        ModSounds.register(modEventBus);
 
         GeckoLib.initialize();
 

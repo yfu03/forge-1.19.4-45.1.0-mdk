@@ -18,6 +18,7 @@ import net.yf.tutorialmod.TutorialMod;
 import net.yf.tutorialmod.block.custom.AnimatedBlock;
 import net.yf.tutorialmod.block.custom.ModFlammableRotatedPillarBlock;
 import net.yf.tutorialmod.item.ModItems;
+import net.yf.tutorialmod.sound.ModSounds;
 import net.yf.tutorialmod.worldgen.tree.EbonyTreeGrower;
 
 import java.util.function.Supplier;
@@ -100,7 +101,7 @@ public class ModBlocks {
             () -> new SaplingBlock(new EbonyTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
     public static final RegistryObject<Block> ANIMATED_BLOCK = BLOCKS.register("animated_block",
-            () -> new AnimatedBlock(BlockBehaviour.Properties.of(Material.STONE).noOcclusion()));
+            () -> new AnimatedBlock(BlockBehaviour.Properties.of(Material.STONE).sound(ModSounds.ANIMATED_BLOCK_SOUNDS).strength(1f).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
        RegistryObject<T> toReturn = BLOCKS.register(name, block);
